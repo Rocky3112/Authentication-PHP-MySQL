@@ -19,6 +19,7 @@
     padding: 120px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    background-color: rgb(184, 231, 184);
 }
 .formControl{
     text-align: center;
@@ -65,12 +66,14 @@ button:hover{
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     text-align: center;
+    background-color: rgb(184, 231, 184);
 }
 
 input {
     width: 300px;
     padding: 15px;
     margin: 8px 0;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
