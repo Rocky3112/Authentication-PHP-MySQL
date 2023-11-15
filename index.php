@@ -9,7 +9,7 @@
 
 </head>
 
-<body>
+<body class="main">
     <div class="formContainer">
         <div class="formControl">
         <form>
@@ -21,6 +21,8 @@
             <div class="btn">
                 <button type="submit">Send</button>
             </div>
+
+            <a href="signUp.php">Already have an account? Log In</a>
         </form>
         </div>
     </div>
