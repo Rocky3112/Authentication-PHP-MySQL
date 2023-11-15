@@ -1,0 +1,50 @@
+.rr {
+  font-size: 50px;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  
+}
+.formContainer {
+    width: 550px;
+    padding: 120px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.formControl{
+    text-align: center;
+}
+
+.inputAll {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: rgba(0, 140, 255, 0.823);
+  border: none;
+  color: white;
+  padding: 7px 35px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+button:hover{
+    background-color: rgb(10, 229, 54);
+}
+.btn {
+  text-align: center;
+}
