@@ -25,9 +25,9 @@ if (isset($_POST['submit'])) {
             $number = preg_match('/[0-9]/', $password);
             $specialChar = preg_match('/[@$!%*?&]/', $password);
 
-            $regexConditionMet = $uppercase && $lowercase && $number && $specialChar && strlen($password) >= 8;
+            $regexCondition = $uppercase && $lowercase && $number && $specialChar && strlen($password) >= 8;
 
-            if ($regexConditionMet) {
+            if ($regexCondition) {
                 // Hash the password before storing it in the database
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
                 $sql->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword);
 
                 if ($sql->execute()) {
-                    $successMessage = "User Created";
+                    $successMessage = header('location:index.php?userCreated');
                 } else {
                     $errorMessage = "Error: " . $sql->error;
                 }
