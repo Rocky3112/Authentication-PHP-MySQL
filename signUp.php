@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 
                 if ($sql->execute()) {
                     echo '<script>alert("Registration successful");</script>';
-                    $successMessage = header('location:index.php?userCreated');
+                    $successMessage = header('location:login.php?userCreated');
                 } else {
                     $errorMessage = "Error: " . $sql->error;
                 }
@@ -80,7 +80,7 @@ $conn->close();
             <br>
             <button type="submit" name="submit">Sign Up</button>
         </form>
-        <a href="index.php">Already have an account? Log In</a>
+        <a href="login.php">Already have an account? Log In</a>
 
         <?php
         if ($successMessage) {

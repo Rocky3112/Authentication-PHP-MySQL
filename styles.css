@@ -1,10 +1,40 @@
-.rr {
-  font-size: 50px;
-}
+
 * {
   margin: 0;
   padding: 0;
 }
+/* for index.php */
+.webName{
+    font-size: 80px;
+}
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 70px;
+    background-color: #4CAF50;
+    color: white;
+    
+  }
+  .navContainer ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 300px;
+    font-size: 20px;
+    
+  }
+  .navContainer ul li{
+    list-style: none;
+  }
+  .navContainer ul li a{
+    color: white;
+  }
+  .navContainer ul li a:hover{
+    color: rgb(226, 12, 12);
+  }
+  
+  /* for login */
 
 .main{
     display: flex;
