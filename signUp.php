@@ -19,7 +19,6 @@ if (isset($_POST['submit'])) {
     if ($firstName && $lastName && $email && $password && $confirmPassword) {
         if ($password === $confirmPassword) {
 
-            // Custom password conditions
             $uppercase = preg_match('/[A-Z]/', $password);
             $lowercase = preg_match('/[a-z]/', $password);
             $number = preg_match('/[0-9]/', $password);
@@ -28,14 +27,13 @@ if (isset($_POST['submit'])) {
             $regexCondition = $uppercase && $lowercase && $number && $specialChar && strlen($password) >= 8;
 
             if ($regexCondition) {
-                // Hash the password before storing it in the database
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                // Use prepared statement to prevent SQL injection
                 $sql = $conn->prepare("INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?)");
                 $sql->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword);
 
                 if ($sql->execute()) {
+                    echo '<script>alert("Registration successful");</script>';
                     $successMessage = header('location:index.php?userCreated');
                 } else {
                     $errorMessage = "Error: " . $sql->error;
@@ -85,7 +83,6 @@ $conn->close();
         <a href="index.php">Already have an account? Log In</a>
 
         <?php
-        // Display success or error message if they are set
         if ($successMessage) {
             echo '<div style="color: green;">' . $successMessage . '</div>';
         }

@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'auth.php';
+
 $conn = new mysqli('localhost', 'root', '', 'authentication');
 
 $unsuccessfulmsg = '';
@@ -9,27 +10,12 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     if (!empty($email) && !empty($password)) {
-        // Retrieve the hashed password from the database
-        $sql = $conn->prepare("SELECT * FROM users WHERE email = ?");
-        $sql->bind_param("s", $email);
-        $sql->execute();
-        $result = $sql->get_result();
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $hashedPassword = $row['password'];
-
-            // Check if the entered password matches the hashed password
-            if (password_verify($password, $hashedPassword)) {
-                echo "Found";
-            } else {
-                echo "Not Found: Incorrect password";
-            }
+        if (authenticateUser($email, $password, $conn)) {
+            header('Location: home.php');
+            exit();
         } else {
-            echo "Not Found: User not found";
+            $unsuccessfulmsg = "Incorrect email or password";
         }
-
-        $sql->close();
     }
 }
 ?>
@@ -54,8 +40,9 @@ if (isset($_POST['submit'])) {
             <br>
             <button type="submit" name="submit">Login</button>
         </form>
+        <a href="signUp.php">Don't have an account? Sign UP</a>
         <?php
-        // Display error message if set
+        
         if ($unsuccessfulmsg) {
             echo '<div style="color: red;">' . $unsuccessfulmsg . '</div>';
         }
