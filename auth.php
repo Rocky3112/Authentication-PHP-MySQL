@@ -16,6 +16,13 @@ function authenticateUser($email, $password, $conn) {
 
         if (password_verify($password, $hashedPassword)) {
             $_SESSION['user_authenticated'] = true;
+            
+            if (!isset($_SESSION['alert_shown'])) {
+                $_SESSION['alert_shown'] = true;
+                $_SESSION['show_alert'] = true;
+            } else {
+                $_SESSION['show_alert'] = false;
+            }
             return true; 
         }
     }
